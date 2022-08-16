@@ -14,6 +14,7 @@ img_win5=ImageTk.PhotoImage(Image.open('/home/marsy/py_for_sci/exercises_23_07_2
 
 img_list=[img_win1,img_win2,img_win3,img_win4,img_win5]
 
+status=Label(root, text="Image of "+ str(len(img_list)), bd=1, relief=SUNKEN, anchor=E)
 
 label_win=Label(image=img_win1)
 label_win.grid(row=0,column=0,columnspan=3)
@@ -36,6 +37,9 @@ def forward(image_number):
     button_back.grid(row=1,column=0)
     button_forward.grid(row=1,column=2)
 
+    
+    status=Label(root, text="Image "+ str(image_number) + " of "+ str(len(img_list)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3)
 
 def back(image_number):
     global label_win
@@ -55,7 +59,10 @@ def back(image_number):
     button_back.grid(row=1,column=0)
     button_forward.grid(row=1,column=2)
 
+    status=Label(root, text="Image "+ str(image_number) + " of "+ str(len(img_list)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3, sticky=W+E)
 
+#
 
 button_back=Button(root, text="<<", command=back, state=DISABLED)
 button_quit=Button(root, text="Exit Program", command=root.quit)
@@ -63,6 +70,8 @@ button_forward=Button(root, text=">>", command=lambda: forward(2))
 
 button_back.grid(row=1,column=0)
 button_quit.grid(row=1,column=1)
-button_forward.grid(row=1,column=2)
+button_forward.grid(row=1,column=2, pady=10)
+status.grid(row=2, column=0, columnspan=3, sticky=W+E)
+
 
 root.mainloop()
